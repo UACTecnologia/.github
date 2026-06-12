@@ -1,0 +1,103 @@
+name: "Equipo de Desarrollo de Software"
+description: "Historia de usuario, feature o cambio técnico en una aplicación"
+title: "[DEV] "
+labels: ["tipo:desarrollo"]
+projects: ["tu-org/1"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Contexto del desarrollo
+        Completa todos los campos. Los issues sin Definition of Ready completa no entran a sprint.
+
+  - type: textarea
+    id: historia
+    attributes:
+      label: "Historia de usuario / Descripción"
+      description: "¿Qué se necesita y por qué?"
+      placeholder: "Como [rol], quiero [funcionalidad], para [beneficio de negocio]."
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: "Criterios de aceptación"
+      description: "Condiciones verificables para dar por terminado el trabajo (formato Given/When/Then recomendado)"
+      placeholder: |
+        - [ ] Dado que..., cuando..., entonces...
+        - [ ] Dado que..., cuando..., entonces...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo_cambio
+    attributes:
+      label: "Tipo de cambio"
+      options:
+        - "Nueva funcionalidad"
+        - "Mejora de funcionalidad existente"
+        - "Bug / Corrección"
+        - "Deuda técnica / Refactor"
+        - "Seguridad"
+        - "Configuración / Infraestructura"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: "Prioridad"
+      options:
+        - "P0 - Crítica (bloquea operación)"
+        - "P1 - Alta"
+        - "P2 - Media"
+        - "P3 - Baja"
+      default: 2
+    validations:
+      required: true
+
+  - type: input
+    id: sistema
+    attributes:
+      label: "Sistema / Aplicación afectada"
+      placeholder: "Ej: Portal de clientes, API de facturación"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alcance_tecnico
+    attributes:
+      label: "Alcance técnico (opcional)"
+      description: "Componentes, endpoints, tablas o módulos impactados. Notas de arquitectura."
+      placeholder: "Repos afectados, dependencias, consideraciones de migración..."
+
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: "Dependencias y bloqueos"
+      description: "Issues relacionados (#123), accesos, definiciones pendientes de negocio"
+      placeholder: "Depende de #45. Requiere acceso a ambiente QA."
+
+  - type: checkboxes
+    id: dor
+    attributes:
+      label: "Definition of Ready (DoR)"
+      description: "Marcar antes de ingresar a sprint"
+      options:
+        - label: "Historia y criterios de aceptación claros y validados con el solicitante"
+        - label: "Dependencias identificadas y sin bloqueos críticos"
+        - label: "Estimación realizada por el equipo"
+        - label: "Diseño/mockup o definición técnica disponible (si aplica)"
+
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: "Definition of Done (DoD)"
+      description: "Marcar antes de cerrar el issue"
+      options:
+        - label: "Código en rama principal vía PR aprobado (mínimo 1 revisor)"
+        - label: "Pruebas unitarias/integración pasando en CI"
+        - label: "Criterios de aceptación verificados en QA"
+        - label: "Documentación actualizada (README, wiki o gobierno de TI)"
+        - label: "Desplegado y validado en producción"
