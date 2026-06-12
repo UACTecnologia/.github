@@ -1,0 +1,123 @@
+name: "Equipo de Datos e Automatizacion"
+description: "Pipeline ETL/ELT, modelo de datos, dashboard o automatización de datos"
+title: "[DATA] "
+labels: ["tipo:datos"]
+projects: ["tu-org/1"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Contexto del requerimiento de datos
+        Aplica para las células de Data Engineering, Analytics/BI y Automation/DataOps.
+
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: "Objetivo de negocio"
+      description: "¿Qué pregunta de negocio responde o qué proceso habilita?"
+      placeholder: "El área de [X] necesita [información/proceso] para [decisión/operación]."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo_trabajo
+    attributes:
+      label: "Tipo de trabajo"
+      options:
+        - "Pipeline ETL/ELT (nuevo)"
+        - "Pipeline ETL/ELT (modificación)"
+        - "Modelado de datos / DWH"
+        - "Dashboard / Reporte (Power BI)"
+        - "Automatización (N8N / scripts)"
+        - "Calidad de datos / Auditoría"
+        - "Incidente de datos"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: celula
+    attributes:
+      label: "Célula responsable"
+      options:
+        - "Data Engineering"
+        - "Analytics / BI"
+        - "Automation / DataOps"
+        - "Por definir"
+    validations:
+      required: true
+
+  - type: textarea
+    id: fuentes
+    attributes:
+      label: "Fuentes y destinos de datos"
+      description: "Sistemas origen, tablas/colecciones, destino final"
+      placeholder: |
+        Origen: MySQL (tabla ventas), API externa X
+        Destino: PostgreSQL DWH (esquema staging → mart)
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: "Criterios de aceptación"
+      description: "Incluye reglas de negocio, métricas esperadas y validaciones de calidad"
+      placeholder: |
+        - [ ] Los totales cuadran con el sistema fuente (tolerancia 0%)
+        - [ ] El pipeline corre diario a las 5:00 AM y registra logs estructurados
+        - [ ] El dashboard refresca antes de las 7:00 AM
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frecuencia
+    attributes:
+      label: "Frecuencia / Programación"
+      options:
+        - "Tiempo real / Streaming"
+        - "Horaria"
+        - "Diaria"
+        - "Semanal"
+        - "Mensual"
+        - "Una sola vez (ad hoc)"
+        - "No aplica"
+
+  - type: dropdown
+    id: sensibilidad
+    attributes:
+      label: "Sensibilidad de los datos"
+      description: "Determina controles de acceso y cumplimiento"
+      options:
+        - "Pública / Interna general"
+        - "Confidencial (financiera, comercial)"
+        - "Datos personales (requiere revisión de cumplimiento)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: "Dependencias y accesos"
+      placeholder: "Acceso de lectura a BD origen, credenciales API, issue #78..."
+
+  - type: checkboxes
+    id: dor
+    attributes:
+      label: "Definition of Ready (DoR)"
+      options:
+        - label: "Fuentes de datos identificadas y accesos confirmados"
+        - label: "Reglas de negocio y criterios de calidad definidos con el solicitante"
+        - label: "Volumetría y frecuencia estimadas"
+        - label: "Sensibilidad de datos clasificada"
+
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: "Definition of Done (DoD)"
+      options:
+        - label: "Pipeline/artefacto versionado en GitHub (código, workflow N8N o .pbix según aplique)"
+        - label: "Validación de calidad ejecutada y documentada (conteos, totales, nulls)"
+        - label: "Logging estructurado y alertas configuradas"
+        - label: "Programación activa (cron/systemd/N8N) y monitoreada"
+        - label: "Documentación en el repositorio de gobierno (linaje, diccionario, owner)"
+        - label: "Validado y aceptado por el solicitante"
