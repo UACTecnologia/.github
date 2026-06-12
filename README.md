@@ -1,2 +1,6 @@
-# .github
-Uso de los repositorios y documentacion
+# Central Documentation
+
+(Aun en construccion)
+Repositorio Central para las documentacion y estandarizaciones.
+
+
